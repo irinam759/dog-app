@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import { HashRouter, Route } from 'react-router-dom';
 import './App.css';
+import AllDogs from './pages/AllDogs';
+import SingleBreed from './pages/SingleBreed';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
+import Navbar from './components/Navbar';
+import About from './pages/About';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <HashRouter>
+        <Navbar>
+
+        </Navbar>
+        <Container>
+        <Route exact path="/">
+          <AllDogs/>
+        </Route>
+        <Route exact path="/breed/:singleBreed">
+          <SingleBreed />
+        </Route>
+        <Route exact path="/About">
+         <About></About>
+        </Route>
+        </Container>
+      </HashRouter>
   );
 }
 
